@@ -16,99 +16,90 @@ public class TestSMSChecker{
 
     @Test
     public void test1RegisterAllLowerCase() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryOne = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "register");
-        assertTrue(SMSChecker.check(entry,sms));
-        //assertFalse(SMSChecker.check(entry, sms));
+        entryOne.put("Message", "register");
+        assertTrue(SMSChecker.check(entryOne,sms));
         logger.info(" True, and considered as correct Message :) " +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test2RegisterMixedCase() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryTwo = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "ReGiStEr");
-        assertTrue(SMSChecker.check(entry, sms));
-        //assertFalse(SMSChecker.check(entry, sms));
+        entryTwo.put("Message", "ReGiStEr");
+        assertTrue(SMSChecker.check(entryTwo, sms));
         logger.info(" True, and considered as correct Message :) " +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test3RegisterSentenceCase() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryThree = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "Register");
-        assertTrue(SMSChecker.check(entry, sms));
-        //assertFalse(SMSChecker.check(entry, sms));
+        entryThree.put("Message", "Register");
+        assertTrue(SMSChecker.check(entryThree, sms));
         logger.info(" True, and considered as correct Message :) " +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test4RegisterAllCaps() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryFour = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "REGISTER");
-        assertTrue(SMSChecker.check(entry, sms));
-        //assertFalse(SMSChecker.check(entry, sms));
+        entryFour.put("Message", "REGISTER");
+        assertTrue(SMSChecker.check(entryFour, sms));
         logger.info(" True, and considered as correct Message :) " +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test5RegisterNull() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryFive = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "");
-        assertFalse(SMSChecker.check(entry, sms));
-        //assertTrue(SMSChecker.check(entry, sms));
+        entryFive.put("Message", "");
+        assertFalse(SMSChecker.check(entryFive, sms));
         logger.info(" False, Null." +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test6RegisterWhiteSpaceFront() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entrySix = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", " register");
-        assertFalse(SMSChecker.check(entry, sms));
-        //assertTrue(SMSChecker.check(entry, sms));
+        entrySix.put("Message", " register");
+        assertFalse(SMSChecker.check(entrySix, sms));
         logger.warning(" False, Incorrect usage due to whitespace at the front" +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test7RegisterWhiteSpaceBack() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entrySeven = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "register ");
-        assertFalse(SMSChecker.check(entry, sms));
-        //assertTrue(SMSChecker.check(entry, sms));
+        entrySeven.put("Message", "register ");
+        assertFalse(SMSChecker.check(entrySeven, sms));
         logger.warning(" False, Incorrect usage due to whitespace at the back" +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test8RegisterAddedLetters() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryEight = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "registers");
-        assertFalse(SMSChecker.check(entry, sms));
-        //assertTrue(SMSChecker.check(entry, sms));
+        entryEight.put("Message", "registers");
+        assertFalse(SMSChecker.check(entryEight, sms));
         logger.warning(" False, Incorrect usage due to misspelled" +
                 "\n ------------------------------------------------------------------------");
     }
 
     @Test
     public void test9RegisterJejemon() {
-        HashMap<String, String> entry = new HashMap<>();
+        HashMap<String, String> entryNine = new HashMap<>();
         SMS sms = new SMS();
-        entry.put("Message", "r3G!sT3r");
-        assertFalse(SMSChecker.check(entry, sms));
-        //assertTrue(SMSChecker.check(entry, sms));
+        entryNine.put("Message", "r3G!sT3r");
+        assertFalse(SMSChecker.check(entryNine, sms));
         logger.warning(" False, Incorrect usage due to misspelled" +
                 "\n ------------------------------------------------------------------------");
     }
